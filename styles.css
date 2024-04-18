@@ -3,22 +3,46 @@ body {
     flex-direction: column;
     justify-self: center;
     align-items: center;
-    background-color: rgb(83, 83, 83);
+    background-color: #264653;
 }
-
-
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 .main{
-background-color: rgb(71, 57, 57);
+background-color:#2A9D8F;
+border: 2px solid white;
 padding: 5px;
-
-
+}
+.clickables{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+}
+#operators, .main{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
 }
 
-#digits{
-    width: fit-content;
+.enter{
+    flex-grow: 1;
+}
+#digits button{  
+    background-color: #E9C46A;
+}
+#operators button {
+    background-color:#F4A261;
+}
+.main>button{
+    background-color:#E76F51;
 }
 button{
-margin: -1px;
-padding: -1px;
+    border: 2px solid white;
+    width: 20px;
+    height: 20px;
+    opacity: 0.9;
+    padding: 0px;
 }
+button:hover {
+    opacity: 1;
+  }
