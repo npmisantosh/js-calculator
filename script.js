@@ -30,16 +30,10 @@ containerButtons.addEventListener("click", (e) => {
 
     updateDisplay();
   }
-  console.log("first " + first + " second " + second);
-  console.log("Display Text " + displayText);
 });
 
 containerMath.addEventListener("click", (e) => {
   if (!isMath) {
-    displayText += e.target.innerText;
-    console.log("displayText: ", displayText);
-    updateDisplay();
-
     if (e.target.innerText == "+") {
       toAdd = true;
     }
@@ -52,8 +46,12 @@ containerMath.addEventListener("click", (e) => {
     if (e.target.innerText == "*") {
       toMul = true;
     }
+    displayText += e.target.innerText;
+    isMath = true;
+    updateDisplay();
+  } else {
+    operate();
   }
-  isMath = true;
 });
 
 buttonClear.addEventListener("click", (e) => {
@@ -77,15 +75,26 @@ buttonBack.addEventListener("click", (e) => {
   if (isMath) {
     second = second.substring(0, second.length - 1);
   }
-
-  console.log("first " + first + " second " + second);
-  console.log("Display Text " + displayText);
+  updateDisplay();
 });
 
-buttonDecimal.addEventListener("click", (e) => {});
+buttonDecimal.addEventListener("click", (e) => {
+  if (!isDecimal) {
+    if (!isMath) {
+      first += ".";
+    }
+    if (isMath && second != "") {
+      second = +".";
+    }
+    isDecimal = true;
+  }
+
+  updateDisplay();
+});
 
 function updateDisplay() {
   displayx.setAttribute("value", displayText);
+  //console.log(" first: " + first + isMath + " second " + second);
 }
 
 buttonEnter.addEventListener("click", operate);
@@ -118,27 +127,27 @@ function add() {
   result = +first + +second;
   displayText = result;
   first = result;
-  updateDisplay();
   resetEverything();
+  updateDisplay();
 }
 function sub() {
   result = +first - +second;
   displayText = result;
   first = result;
-  updateDisplay();
   resetEverything();
+  updateDisplay();
 }
 function mul() {
   result = +first * +second;
   displayText = result;
   first = result;
-  updateDisplay();
   resetEverything();
+  updateDisplay();
 }
 function div() {
   result = +first / +second;
   displayText = result;
   first = result;
-  updateDisplay();
   resetEverything();
+  updateDisplay();
 }
